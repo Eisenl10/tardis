@@ -165,3 +165,13 @@ may encounter the following error::
     conda install sphinx==1.5.6
 
 Then, ``python setup.py build install`` should run without problems.
+
+**Problem:** When trying to run ``python setup.py develop`` on macOS, the following error popped up::
+
+        unsupported tapi file type '!tapi-tbd' in YAML file '/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/lib/libSystem.tbd' for architecture x86_64
+        clang-10: error: linker command failed with exit code 1 (use -v to see invocation)
+        
+**Solution:** Set ``gcc`` as your standard compiler to replace the default ``clang`` shipped with XCode::
+
+    export CC=gcc
+If gcc is not yet installed on your machine, get homebrew and install it with ``brew install gcc``.
